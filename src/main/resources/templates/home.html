@@ -1,0 +1,38 @@
+<!-- <!DOCTYPE html>: This declaration defines the document type and version of HTML used in the document. -->
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Battery Monitor</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<div class="container mt-4">
+    <h1>Battery Charge Levels</h1>
+    <div class="list-group">
+        <div th:each="battery : ${batteries}" class="list-group-item d-flex justify-content-between align-items-center">
+            <div th:text="|${battery.name}: ${battery.chargePercentage}%|"></div>
+            <span class="badge bg-primary rounded-pill" th:text="${battery.chargePercentage}"></span>
+        </div>
+    </div>
+    <a href="/add" class="btn btn-primary mt-3">Add Battery</a>
+</div>
+</body>
+</html>
+
+
+<!--
+
+<html xmlns:th="http://www.thymeleaf.org">: This line declares the Thymeleaf namespace, allowing you to use Thymeleaf attributes in your HTML.
+<head>: This section contains meta-information about the document, such as the title and external CSS files.
+<title>Battery Monitor</title>: Sets the title of the HTML document to "Battery Monitor".
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">: This line imports the Bootstrap CSS framework from a CDN, allowing you to use Bootstrap styles in your HTML.
+<body>: This section contains the content of the document that will be displayed in the browser.
+<div class="container mt-4">: This <div> element with the class container and mt-4 margin-top class from Bootstrap creates a container for the content with a top margin.
+<h1>Battery Charge Levels</h1>: Displays a heading indicating "Battery Charge Levels".
+<div class="list-group">: This <div> element with the class list-group from Bootstrap creates a list group.
+<div th:each="battery : ${batteries}" class="list-group-item d-flex justify-content-between align-items-center">: This line uses Thymeleaf's th:each attribute to iterate over a collection of batteries (${batteries}). For each battery in the collection, it generates a <div> element with the class list-group-item, d-flex, justify-content-between, and align-items-center from Bootstrap, creating a list item with flexbox alignment.
+<div th:text="|${battery.name}: ${battery.chargePercentage}%|"></div>: This line uses Thymeleaf's th:text attribute to dynamically set the text content of the <div> element to ${battery.name}: ${battery.chargePercentage}%. It displays the name and charge percentage of each battery.
+<span class="badge bg-primary rounded-pill" th:text="${battery.chargePercentage}"></span>: This line creates a Bootstrap badge (<span> element with classes badge bg-primary rounded-pill) that displays the battery's charge percentage.
+<a href="/add" class="btn btn-primary mt-3">Add Battery</a>: This line creates a Bootstrap button (<a> element with classes btn btn-primary mt-3) that links to /add and displays "Add Battery".
+
+-->
